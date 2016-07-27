@@ -9,22 +9,22 @@ Bash Script to create or delete nginx virtual hosts/blocks on ubuntu
         
 ## Usage ##
 
-    $ sudo virtualhost [create | delete] [domain] [optional host_dir]
+    $ sudo virtualhost-nginx [create | delete] [domain] [optional host_dir]
       
 ### Examples ###
 
 to create a new virtual host:
 
-    $ sudo virtualhost create mysite.dev
+    $ sudo virtualhost-nginx create mysite.dev
 
 to create a new virtual host with custom directory name:
 
-    $ sudo virtualhost create anothersite.dev my_dir
+    $ sudo virtualhost-nginx create anothersite.dev my_dir
 
 to delete a virtual host
 
-    $ sudo virtualhost delete mysite.dev
+    $ sudo virtualhost-nginx delete mysite.dev
 
 to delete a virtual host with custom directory name:
 
-    $ sudo virtualhost delete anothersite.dev my_dir
+    $ sudo virtualhost-nginx delete anothersite.dev my_dir
