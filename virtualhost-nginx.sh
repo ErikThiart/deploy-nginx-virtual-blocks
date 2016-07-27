@@ -12,7 +12,7 @@ sitesAvailable='/etc/nginx/sites-available/'
 userDir='/var/www/'
 
 if [ "$(whoami)" != 'root' ]; then
-	echo $"You have no permission to run $0 as non-root user. Use sudo"
+	echo $"You do not have the permission to run $0 as non-root user. Use sudo"
 		exit 1;
 fi
 
@@ -24,7 +24,7 @@ fi
 
 while [ "$domain" == "" ]
 do
-	echo -e $"Please provide domain. e.g.dev,staging"
+	echo -e $"Please provide a domain. e.g.dev,staging"
 	read domain
 done
 
@@ -43,7 +43,7 @@ if [ "$action" == 'create' ]
 	then
 		### check if domain already exists
 		if [ -e $sitesAvailable$domain ]; then
-			echo -e $"This domain already exists.\nPlease Try Another one"
+			echo -e $"Oops! This domain already exists.\nPlease Try Another one"
 			exit;
 		fi
 
@@ -56,7 +56,7 @@ if [ "$action" == 'create' ]
 			### write test file in the new domain dir
 			if ! echo "<?php echo phpinfo(); ?>" > $userDir$rootDir/phpinfo.php
 				then
-					echo $"ERROR: Not able to write in file $userDir/$rootDir/phpinfo.php. Please check permissions."
+					echo $"ERROR: Not able to write in file $userDir/$rootDir/phpinfo.php. Please check the permissions."
 					exit;
 			else
 					echo $"Added content to $userDir$rootDir/phpinfo.php."
@@ -108,16 +108,16 @@ if [ "$action" == 'create' ]
 
 		}" > $sitesAvailable$domain
 		then
-			echo -e $"There is an ERROR create $domain file"
+			echo -e $"There is an ERROR creating $domain file"
 			exit;
 		else
-			echo -e $"\nNew Virtual Host Created\n"
+			echo -e $"\nSuccess! New Virtual Host Created\n"
 		fi
 
 		### Add domain in /etc/hosts
 		if ! echo "127.0.0.1	$domain" >> /etc/hosts
 			then
-				echo $"ERROR: Not able write in /etc/hosts"
+				echo $"ERROR: Not able to write in /etc/hosts"
 				exit;
 		else
 				echo -e $"Host added to /etc/hosts file \n"
@@ -141,7 +141,7 @@ if [ "$action" == 'create' ]
 	else
 		### check whether domain already exists
 		if ! [ -e $sitesAvailable$domain ]; then
-			echo -e $"This domain dont exists.\nPlease Try Another one"
+			echo -e $"This domain does not exists.\nPlease Try Another one"
 			exit;
 		else
 			### Delete domain in /etc/hosts
