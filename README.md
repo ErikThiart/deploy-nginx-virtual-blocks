@@ -4,7 +4,7 @@ Bash Script to create or delete nginx virtual hosts/blocks on ubuntu
 ## Global Installation ##
 
     $ cd /usr/local/bin
-    $ wget -O virtualhost-nginx https://raw.githubusercontent.com/ErikThiart/deploy-nginx-virtual-blocks/master/virtualhost-nginx.sh
+    $ sudo wget -O virtualhost-nginx https://raw.githubusercontent.com/ErikThiart/deploy-nginx-virtual-blocks/master/virtualhost-nginx.sh
     $ chmod +x virtualhost-nginx
         
 ## Usage ##
